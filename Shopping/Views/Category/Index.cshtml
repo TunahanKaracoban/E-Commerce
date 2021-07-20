@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Shopping.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+
+
+        <div class="box">
+
+            <div class="box-header">
+                <h3 class="box-title">Kategori Listesi</h3>
+            </div>
+
+            <div class="box-body">
+                <a class="btn btn-primary btn-block" href="@Url.Action("Create")">Kayıt Ekle</a><br />
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ParentId</th>
+                            <th>Kategori Adı</th>
+                            <th>Aktif mi</th>
+                            <th>Oluşturma Tarihi</th>
+                            <th>Güncelleme Tarihi</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ParentId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsActive)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UpdateDate)
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("Edit",new { id = item.Id })"><i class="fa fa-fw fa-edit"></i>Düzenle</a>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete",new { id = item.Id })"><i class="fa fa-fw fa-trash-o"></i>Sil</a>
+
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>ParentId</th>
+                            <th>Kategori Adı</th>
+                            <th>Aktif mi</th>
+                            <th>Oluşturma Tarihi</th>
+                            <th>Güncelleme Tarihi</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div>
+
+
+

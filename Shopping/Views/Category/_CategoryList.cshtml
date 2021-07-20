@@ -1,0 +1,7 @@
+﻿@using Shopping.Models
+@model IEnumerable<Category>
+<li><a href="/Home/Product">ÜRÜNLER</a></li>
+@foreach (var item in Model)
+{
+    <li><a href="/Home/ProductList/@item.Id">@item.Name</a></li>
+}
